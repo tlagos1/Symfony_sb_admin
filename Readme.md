@@ -1,6 +1,6 @@
 # Symfony project: sb_admin - Bootstrap 5.3.2
 
-Symfony web project for sb_admin template using Bootstrap 5.3.2.
+Symfony web project for [sb_admin](https://startbootstrap.com/template/sb-admin) template using Bootstrap 5.3.2.
 This repository is intended to provide the community a symfony project with this template.
 
 This project includes a basic session control configuration.
