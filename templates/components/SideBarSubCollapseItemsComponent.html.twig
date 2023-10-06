@@ -1,0 +1,32 @@
+{% set itemsArraySet =  collapseItems|map(item => "#{item.items}") %}
+{% set isRouteSet = [] %}
+{% for itemsSet in  itemsArraySet %}
+    {% set isRouteSet = isRouteSet|merge(itemsSet|map(item=> "#{item.isRoute}")) %}
+{% endfor %}
+
+<a class="nav-link{% if true in isRouteSet %} {% else %} collapsed{% endif %}" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+    <div class="sb-nav-link-icon"><i class="{{ icon }}"></i></div>
+    {{ mainCollapseListName }}
+    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+</a>
+<div class="collapse {% if true in isRouteSet %} show{% endif %}" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+    <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+        {% for collapseItem in collapseItems %}
+
+            {% set isRouteItem =  collapseItem.items|map(item => "#{item.isRoute}") %}
+
+            <a class="nav-link {% if true in isRouteItem %} {% else %} collapsed{% endif %}" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapse{{ collapseItem.collapseSetName }}" aria-expanded="false" aria-controls="pagesCollapse{{ collapseItem.collapseSetName }}">
+                {{ collapseItem.collapseSetName }}
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+
+            <div class="collapse{% if true in isRouteItem %} show{% endif %}" id="pagesCollapse{{ collapseItem.collapseSetName }}" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                <nav class="sb-sidenav-menu-nested nav">
+                    {% for item in collapseItem.items %}
+                        <a class="nav-link{% if item.isRoute %} active {% endif %}" href="{{ item.routePath }}">{{ item.routeName }}</a>
+                    {% endfor %}
+                </nav>
+            </div>
+        {% endfor %}
+    </nav>
+</div>

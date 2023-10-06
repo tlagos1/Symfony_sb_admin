@@ -1,0 +1,16 @@
+
+{% set isRouteSet =  items|map(item => "#{item.isRoute}") %}
+
+<a class="nav-link{% if true in isRouteSet %} {% else %} collapsed{% endif %}" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"  aria-controls="collapseLayouts">
+    {% if icon != null %}<div class="sb-nav-link-icon"><i class="{{ icon }}"></i></div>{% endif %}
+    {{ collapseListName }}
+    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+</a>
+<div class="collapse {% if true in isRouteSet %} show{% endif %}" id="collapseLayouts"  data-bs-parent="#sidenavAccordion">
+    <nav class="sb-sidenav-menu-nested nav">
+
+        {% for collapseItem in items %}
+            <a class="nav-link {% if collapseItem.isRoute %} active {% endif %}" href="{{ collapseItem.routePath }}">{{ collapseItem.routeName }}</a>
+        {% endfor %}
+    </nav>
+</div>
