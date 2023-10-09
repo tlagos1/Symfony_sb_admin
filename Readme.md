@@ -14,10 +14,7 @@ Webpack
 npm install
 npm run build 
 ```
-Composer
-```
-composer install
-```
+
 Enable sql in .env
 ```
 # DATABASE_URL="sqlite:///%kernel.project_dir%/var/data.db"
@@ -25,6 +22,12 @@ Enable sql in .env
 # DATABASE_URL="mysql://app:!ChangeMe!@127.0.0.1:3306/app?serverVersion=10.5.20-MariaDB&charset=utf8mb4"
 # DATABASE_URL="postgresql://app:!ChangeMe!@127.0.0.1:5432/app?serverVersion=15&charset=utf8"
 ```
+
+Composer
+```
+composer install
+```
+
 Populate database and add default credentials
 ```
 symfony console doctrine:fixtures:load
