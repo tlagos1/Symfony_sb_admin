@@ -11,6 +11,7 @@ If you like this project give it a star :)
 
 Webpack
 ```
+npm install
 npm run build 
 ```
 Composer
